@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;dcHome&apos;&#x0A;- Original project: &apos;dcHome&apos;&#x0A;- Original elements:&#x0A;     dcHome/src/main/java/com.ericardo.dcHome.models.repositories&#x0A;     dcHome/src/main/java/com.ericardo.dcHome.models.repositories.services" description="Delete elements" element1="/src\/main\/java&lt;com.ericardo.dcHome.models.repositories.services" element2="/src\/main\/java&lt;com.ericardo.dcHome.models.repositories" element3="/src\/main\/java&lt;com.ericardo.dcHome.models" elements="3" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1527274943820" subPackages="false" version="1.0"/>
+</session>

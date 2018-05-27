@@ -1,0 +1,13 @@
+package com.ericardo.dcHome.models;
+
+import javax.persistence.Entity;
+
+@Entity
+public class User {
+
+	
+	
+	
+	
+	
+}
