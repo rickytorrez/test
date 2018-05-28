@@ -1,5 +1,5 @@
 package com.ericardo.dcHome.repositories;
 
-public interface UserRepository {
+public interface RoleRepository {
 
 }

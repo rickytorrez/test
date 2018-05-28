@@ -8,7 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -45,17 +44,13 @@ public class User {
 	@Size(min=8, max=124, message="Password confirmation must be between 8 and 124 characters")
 	private String confirm;
 	
-	private boolean realtor;
-
 	@DateTimeFormat(pattern="MM:dd:yyyy HH:mm:ss")
 	private Date createdAt;
 	
 	@DateTimeFormat(pattern="MM:dd:yyyy HH:mm:ss")
 	private Date updatedAt;
 	
-	/************************************* RELATIONSHIPS *************************************/
-	
-	/************************************* with admin ****************************************/
+	// Join - Join Setters and Getters
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
@@ -141,14 +136,6 @@ public class User {
 
 	public void setConfirm(String confirm) {
 		this.confirm = confirm;
-	}
-	
-	public boolean isRealtor() {
-		return realtor;
-	}
-
-	public void setRealtor(boolean realtor) {
-		this.realtor = realtor;
 	}
 
 	public Date getCreatedAt() {
