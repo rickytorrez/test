@@ -1,0 +1,5 @@
+package com.ericardo.dcHome.config;
+
+public class WebSecurityConfig {
+
+}

@@ -1,0 +1,8 @@
+package com.ericardo.dcHome.repositories;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepository {
+
+}

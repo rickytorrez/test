@@ -1,5 +1,14 @@
 package com.ericardo.dcHome.repositories;
 
-public interface RoleRepository {
+import java.util.List;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.ericardo.dcHome.models.Role;
+
+@Repository
+public interface RoleRepository extends CrudRepository<Role, Long> {
+	List<Role> findAll();
+    List<Role> findByName(String name);
 }
