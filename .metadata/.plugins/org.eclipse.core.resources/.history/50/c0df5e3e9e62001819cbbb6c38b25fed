@@ -1,0 +1,32 @@
+package com.ericardo.dcHome.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.ericardo.dcHome.repositories.UserRepository;
+
+@Service
+public class UserService {
+
+	private UserRepository _uR;
+	private BCryptPasswordEncoder _bcrypt;
+	
+	public UserService(UserRepository _uR) {
+		this._uR = _uR;
+		this._bcrypt = encoder();
+	}
+
+	public BCryptPasswordEncoder encoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	public boolean isMatch(String password, String dbPassword) {
+		if(_bcrypt.matches(password, dbPassword)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+}
