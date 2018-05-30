@@ -1,0 +1,11 @@
+package com.ericardo.dcHome.services;
+
+
+import org.springframework.stereotype.Service;
+
+import com.ericardo.dcHome.repositories.UserRepository;
+
+@Service
+public class UserService {
+    private UserRepository _uR;
+}

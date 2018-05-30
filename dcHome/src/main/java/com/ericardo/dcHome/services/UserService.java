@@ -1,70 +1,89 @@
 package com.ericardo.dcHome.services;
 
+
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.ericardo.dcHome.models.Role;
 import com.ericardo.dcHome.models.User;
-import com.ericardo.dcHome.repositories.RoleRepository;
 import com.ericardo.dcHome.repositories.UserRepository;
+
 
 @Service
 public class UserService {
-    private UserRepository _uR;
-    private RoleRepository _rR;
-    private BCryptPasswordEncoder _brcypt;
-    
-    public UserService(UserRepository _uR, RoleRepository _rR, BCryptPasswordEncoder _brcypt)     {
-        this._uR = _uR;
-        this._rR = _rR;
-        this._brcypt = _brcypt;
-        
-        init();
-    }
-    
-    public void init() {
-    		if(_rR.findAll().size() < 1) {
-    			Role user = new Role();
-    			user.setName("ROLE_USER");
-    			
-    			Role admin = new Role();
-    			admin.setName("ROLE_ADMIN");
-    			
-    			_rR.save(user);
-    			_rR.save(admin);
-    		}
-    }
-    
-    
-    
-    // 1
-    public void saveWithUserRole(User user) {
-        user.setPassword(_brcypt.encode(user.getPassword()));
-        user.setRoles(_rR.findByName("ROLE_USER"));
-        _uR.save(user);
-    }
-     
-     // 2 
-    public void saveUserWithAdminRole(User user) {
-        user.setPassword(_brcypt.encode(user.getPassword()));
-        user.setRoles(_rR.findByName("ROLE_ADMIN"));
-        _uR.save(user);
-    }    
-    
-    // Find by username
-    public User findByUsername(String username) {
-        return _uR.findByUsername(username);
-    }
-    
-    // Find by email
-    public User findByEmail(String email) {
-    		return _uR.findByEmail(email);
-    }
-    
-    public ArrayList<User> all(){
-    		return (ArrayList<User>) _uR.findAll();
-    }
-    
+	
+	private UserRepository _uR;
+	private BCryptPasswordEncoder _bcrypt;
+	
+	public UserService(UserRepository _uR) {
+		this._uR = _uR;
+		this._bcrypt = encoder();
+	}
+	
+	public BCryptPasswordEncoder encoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	public boolean isMatch(String password, String dbPassword) {
+		if(_bcrypt.matches(password, dbPassword)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public void login(HttpSession _session, Long id) {
+		_session.setAttribute("id", id);
+	}
+	
+	public void logout(HttpSession _session) {
+		_session.setAttribute("id", null);
+	}
+	
+	public String redirect() {
+		return "redirect:/users/new";
+	}
+	
+	public boolean isValid(HttpSession _session) {
+		if(_session.getAttribute("id") == null ) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	/************************************* STANDARD CRUD *************************************/
+	
+	public User create(User user) {
+		user.setPassword(_bcrypt.encode(user.getPassword()));
+		return this._uR.save(user);
+	}
+	
+	public ArrayList<User> all(){
+		return (ArrayList<User>) this._uR.findAll();
+	}
+	
+	public User find(Long id) {
+		return (User) this._uR.findOne(id);
+	}
+	
+	public User findByEmail(String email) {
+		return (User) this._uR.findByEmail(email);
+	}
+	
+	public User findByUsername(String username) {
+		return (User) this._uR.findByUsername(username);
+	}
+	
+	public void update(User user) {
+		this._uR.save(user);
+	}
+	
+	public void destroy(Long id) {
+		this._uR.delete(id);
+	}
+	
 }

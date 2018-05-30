@@ -1,0 +1,15 @@
+package com.ericardo.dcHome.services;
+
+import java.util.ArrayList;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.ericardo.dcHome.models.Role;
+import com.ericardo.dcHome.models.User;
+import com.ericardo.dcHome.repositories.RoleRepository;
+import com.ericardo.dcHome.repositories.UserRepository;
+
+@Service
+public class UserService {
+    private UserRepository _uR;

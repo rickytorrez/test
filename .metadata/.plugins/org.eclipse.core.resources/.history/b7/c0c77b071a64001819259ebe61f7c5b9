@@ -1,0 +1,10 @@
+package com.ericardo.dcHome.services.copy;
+
+
+import org.springframework.stereotype.Service;
+
+import com.ericardo.dcHome.repositories.UserRepository;
+
+@Service
+public class UserService {
+}
