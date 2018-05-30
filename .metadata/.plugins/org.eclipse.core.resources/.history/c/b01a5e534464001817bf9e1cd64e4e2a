@@ -63,15 +63,7 @@ public class Listing {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User user;
-	
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
+	 	
 	/********************************* PERSIST AND UPDATE  **********************************/
 	 	
 	@PrePersist
@@ -83,105 +75,9 @@ public class Listing {
 	public void onUpdate() {
 	 	this.updatedAt = new Date();
 	}
-	
 	/******************************** SETTERS AND GETTERS  **********************************/
 
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public Integer getYearbuilt() {
-		return yearbuilt;
-	}
-
-	public void setYearbuilt(Integer yearbuilt) {
-		this.yearbuilt = yearbuilt;
-	}
-
-	public Integer getNumberofrooms() {
-		return numberofrooms;
-	}
-
-	public void setNumberofrooms(Integer numberofrooms) {
-		this.numberofrooms = numberofrooms;
-	}
-
-	public Integer getNumberofbathrooms() {
-		return numberofbathrooms;
-	}
-
-	public void setNumberofbathrooms(Integer numberofbathrooms) {
-		this.numberofbathrooms = numberofbathrooms;
-	}
-
-	public Integer getSize() {
-		return size;
-	}
-
-	public void setSize(Integer size) {
-		this.size = size;
-	}
-
-	public double getCost() {
-		return cost;
-	}
-
-	public void setCost(double cost) {
-		this.cost = cost;
-	}
-
-	public String getPicture() {
-		return picture;
-	}
-
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-	
 	/********************************** EMPTY CONSTRUCTOR  **********************************/
 	 	
 	public Listing() {

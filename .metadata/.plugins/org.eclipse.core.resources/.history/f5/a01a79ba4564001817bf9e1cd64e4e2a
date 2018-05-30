@@ -51,7 +51,7 @@ public class UserController {
 			if(exists == null) {
 				User _user = _uS.create(user);
 				_uS.login(_session, _user.getId());
-				return "redirect:/listings";
+				return "redirect:/users";
 			} else {
 				_flash.addFlashAttribute("error", "A user wtih this e-mail already exists.");
 				return "redirect:/users/new";
