@@ -1,0 +1,36 @@
+package com.ericardo.dcHome.controllers;
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller
+@RequestMapping("/")
+public class RouteController {
+	
+	
+	@RequestMapping("")
+	public String home() {
+		return "newUser";
+	}
+	
+	
+	
+	
+	
+//	@RequestMapping("")
+//	public String index(HttpServletRequest _request, HttpSession _session) {
+//		if(!_uS.isValid(_session)) {
+//			return "redirect:/users/new";
+//		} else {
+//			User user = _uS.find((Long) _session.getAttribute("id"));
+//			
+//			if(user.isRealtor()) {
+//				return "redirect:/listings/realtor";
+//			} else {
+//				return "redirect:/listings";
+//			}
+//		}
+//	}
+}

@@ -1,0 +1,70 @@
+package com.ericardo.dcHome.controllers;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ericardo.dcHome.models.User;
+import com.ericardo.dcHome.services.UserService;
+
+@Controller
+@RequestMapping("/users")
+public class UserController {
+	
+	@Autowired
+	private UserService _uS;
+	
+	/*************************************** ATTRIBUTES **************************************/
+	//	System.out.println("");
+	
+	/*************************************** DASHBOARD ***************************************/
+	@RequestMapping("")
+	public String dashboard(Model _model, HttpSession _session) {
+		if(!_uS.isValid(_session)) 
+			return _uS.redirect();
+		_model.addAttribute("users", this._uS.all());
+		return "dashboard";
+	}
+	
+	/*************************************** REG/LOGIN ***************************************/
+	@RequestMapping("/new")
+	public String newUser(@ModelAttribute("user") User user, HttpSession _session) {
+		_uS.logout(_session);
+		return "newUser";
+	}
+	
+	
+
+	
+	
+	
+
+	
+	
+	
+
+	
+	
+	
+
+	
+	
+	
+
+	
+	
+	
+
+	
+	
+	
+
+	
+	
+	
+	
+}

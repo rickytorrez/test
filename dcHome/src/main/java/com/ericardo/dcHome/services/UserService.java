@@ -2,6 +2,7 @@ package com.ericardo.dcHome.services;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -59,6 +60,10 @@ public class UserService {
 	
 	public User create(User user) {
 		user.setPassword(_bcrypt.encode(user.getPassword()));
+		List<User> users = _uR.findAll();
+		if(users.size() <1 ) {
+			user.setAdmin(true);
+		}
 		return this._uR.save(user);
 	}
 	
