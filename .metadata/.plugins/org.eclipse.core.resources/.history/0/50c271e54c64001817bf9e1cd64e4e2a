@@ -23,12 +23,12 @@ public class UserController {
 	@Autowired
 	private UserService _uS;
 	
-	/*************************************** ADMIN DASHBOARD *********************************/
-	@RequestMapping("dashboard")
+	/*************************************** DASHBOARD ***************************************/
+	@RequestMapping("")
 	public String dashboard(Model _model, HttpSession _session) {
 		if(!_uS.isValid(_session)) 
 			return _uS.redirect();
-		_model.addAttribute("users", _uS.all());		
+		_model.addAttribute("users", this._uS.all());
 		return "dashboard";
 	}
 	
@@ -78,7 +78,7 @@ public class UserController {
 				
 				if(user.isAdmin()) {
 					System.out.println("admin login route in UC");
-					return "redirect:/users/dashboard";
+					return "dashboard";
 				}
 				
 				if(user.isRealtor()) {
