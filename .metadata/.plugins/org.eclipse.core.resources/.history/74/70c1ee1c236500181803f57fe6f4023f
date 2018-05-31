@@ -12,9 +12,8 @@
 		<title>Listing for ${listing.address}</title>
 	</head>
 	<body>
-		<form:form action="/listings/${listing.id}/addImage" method="POST" enctype="multipart/form-data">
+		<form:form action="/listings/${listing.id}/addImage" enctype="multipart/form-data” method="POST" >
 			<input id="files" name="file" type="file">
-			<input type="submit" value="Submit Image" />
 		</form:form>
 	</body>
 </html>

@@ -49,7 +49,6 @@ public class ListingController {
 			user = _uS.find((Long) _session.getAttribute("id"));
 			_model.addAttribute("user", user);
 		}
-		
 		_model.addAttribute("listings", _lS.all());
 		return "listings";
 	}
@@ -65,13 +64,6 @@ public class ListingController {
 		_model.addAttribute("listing", _lS.find(id));
 		return "singleListing";
 	}
-	
-	/*************************************** SEARCH BAR *************************************/
-	
-	
-	
-	
-	
 	
 	/*************************************** REALTOR SIDE ***********************************/
 	/*************************************** AGENT DASHBOARD ********************************/
