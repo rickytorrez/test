@@ -48,19 +48,6 @@ public class ListingController {
 		_model.addAttribute("listings", _lS.all());
 		return "listings";
 	}
-	
-	/*************************************** VIEW SINGLE LISTING  ****************************/
-	
-	@RequestMapping("/{id}")
-	public String find(@PathVariable("id") Long id, Model _model, HttpSession _session) {
-		if(_session.getAttribute("id") == null) {
-			User user = _uS.find( (Long) _session.getAttribute("id"));
-			_model.addAttribute("user", user);
-		}
-		_model.addAttribute("listing", _lS.find(id));
-		return "singleListing";
-	}
-	
 	/*************************************** REALTOR SIDE ***********************************/
 	/*************************************** AGENT DASHBOARD ********************************/
 

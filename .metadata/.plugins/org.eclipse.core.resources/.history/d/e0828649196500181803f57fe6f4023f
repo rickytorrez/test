@@ -18,14 +18,17 @@
 					<th>Description</th>
 					<th>Type</th>
 					<th>Year Built</th>
-
+					<th>Number of Bedrooms</th>
+					<th>Number of Bathrooms</th>
+					<th>Property Size</th>
+					<th>Cost</th>
 				</tr>
 				<c:forEach items="${listings}" var="listing">
 				<tr>
 					<td>${ listing.address }</td>
 		 			<td>${ listing.description }</td>
 		 			<td>${ listing.type }</td>
-		 			<td><a href="/listings/${listing.id}"><button>View</button></a></td>
+		 			<td><a href=""><button>View</button></a></td>
 
 				</tr>
 				</c:forEach>

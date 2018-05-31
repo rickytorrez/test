@@ -25,7 +25,7 @@
 					<td>${ listing.address }</td>
 		 			<td>${ listing.description }</td>
 		 			<td>${ listing.type }</td>
-		 			<td><a href="/listings/${listing.id}"><button>View</button></a></td>
+		 			<td><a href=""><button>View</button></a></td>
 
 				</tr>
 				</c:forEach>

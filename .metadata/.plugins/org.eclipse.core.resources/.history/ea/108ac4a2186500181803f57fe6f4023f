@@ -34,7 +34,6 @@ public class ListingController {
 	@Autowired
 	private PictureService _pS;
 	
-	/*************************************** CLIENT SIDE *************************************/
 	/*************************************** VIEW LISTINGS  **********************************/
 	
 	@RequestMapping("")
@@ -49,20 +48,7 @@ public class ListingController {
 		return "listings";
 	}
 	
-	/*************************************** VIEW SINGLE LISTING  ****************************/
-	
-	@RequestMapping("/{id}")
-	public String find(@PathVariable("id") Long id, Model _model, HttpSession _session) {
-		if(_session.getAttribute("id") == null) {
-			User user = _uS.find( (Long) _session.getAttribute("id"));
-			_model.addAttribute("user", user);
-		}
-		_model.addAttribute("listing", _lS.find(id));
-		return "singleListing";
-	}
-	
-	/*************************************** REALTOR SIDE ***********************************/
-	/*************************************** AGENT DASHBOARD ********************************/
+	/*************************************** REALTOR PORTAL *********************************/
 
 	@RequestMapping("/realtor")
 	public String realtor(HttpSession _session, Model _model, @ModelAttribute("listing") Listing listing) {
@@ -96,11 +82,12 @@ public class ListingController {
 			_lS.create(listing);
 			return "redirect:/listings/realtor";		
 	}
-	/*************************************** DISPLAY SINGLE LISTING FOR REALTOR EDIT *********/
+	/*************************************** DISPLAY SINGLE LISTING **************************/
 	
 	@RequestMapping("{id}/edit")
-	public String displaySingleListing(@PathVariable("id") Long id, Model _model, HttpSession _session, @ModelAttribute("listing") Listing listing) {
+	public String displaySingleListing(@PathVariable("id") Long id, Model _model, HttpSession _session) {
 		if(_session.getAttribute("id") != null) {
+			
 		}
 	}
 	

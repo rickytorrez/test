@@ -12,6 +12,13 @@
 		<title>Listing for ${listing.address}</title>
 	</head>
 	<body>
-	
+		<p>Address: ${listing.address}</p>
+		<p>Property Summary: ${listing.description}</p>
+		<p>Property Type: ${listing.type}</p>
+		<p>Property Built on: ${listing.yearbuilt}</p>
+		<p>Size: ${listing.size} square feet</p>
+		<p>Asking price: $${listing.cost}</p>
+		<p>Number of Bedrooms: ${listing.numberofrooms}</p>
+		<p>Number of Bathrooms: ${listing.numberofbathrooms}</p>
 	</body>
 </html>
