@@ -19,6 +19,8 @@ public class RouteController {
 	@Autowired
 	private UserService _uS;
 	
+	/*************************************** HOME DASHBOARD **********************************/
+
 	@RequestMapping("")
 	public String index(HttpServletRequest _request, HttpSession _session) {
 		if(!_uS.isValid(_session)) {

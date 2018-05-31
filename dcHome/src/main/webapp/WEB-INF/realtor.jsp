@@ -14,7 +14,7 @@
 		<h1>Create a Listing</h1>
 		<form:errors path="listing.errors.*"></form:errors>
 		
-		<form:form method="POST" action="/listings/createListing" modelAttribute="listing">
+		<form:form method="POST" action="/listings/createListing" enctype="multipart/form-data" modelAttribute="listing">
 			<form:label path="address">Address:
 				<form:input path="address"></form:input>
 			</form:label><br>
@@ -43,6 +43,7 @@
 			<form:label path="cost">Asking Price:
 				<form:input type="number" path="cost"></form:input>
 			</form:label><br>
+			<input id="files" name="file" type="file">
 			<input type="submit" value="Create Listing"/>
 		</form:form>
 	</body>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ericardo.dcHome.models.User;
+import com.ericardo.dcHome.services.ListingService;
 import com.ericardo.dcHome.services.UserService;
 
 @Controller
@@ -23,12 +24,16 @@ public class UserController {
 	@Autowired
 	private UserService _uS;
 	
+	@Autowired
+	private ListingService _lS;
+	
 	/*************************************** ADMIN DASHBOARD *********************************/
 	@RequestMapping("dashboard")
 	public String dashboard(Model _model, HttpSession _session) {
 		if(!_uS.isValid(_session)) 
 			return _uS.redirect();
 		_model.addAttribute("users", _uS.all());		
+		_model.addAttribute("listings", _lS.all());
 		return "dashboard";
 	}
 	

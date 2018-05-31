@@ -17,16 +17,48 @@
  				<input type="submit" value="logout" />
  			</p>
  		</form>
- 		<h2>Dashboard</h2>
- 		<hr>
- 		
+ 		<h2>Users</h2>
+ 		<table border="1px">
+ 			<tr>
+ 				<th>Id</th>
+ 				<th>First Name</th>
+ 				<th>Last Name</th>
+ 				<th>Email</th>
+ 			</tr>
  		<c:forEach items="${users}" var="user">
- 			<p>${ user.id }</p>
- 			<p>${ user.firstname }</p>
- 			<p>${ user.lastname }</p>
- 			<p>${ user.email }</p>
- 			<p>${ user.password }</p>
+ 			<tr>
+ 				<td>${ user.id }</td>
+ 				<td>${ user.firstname }</td>
+ 				<td>${ user.lastname }</td>
+ 				<td>${ user.email }</td>
+ 			</tr>
  		</c:forEach>
+ 		</table>
+		
+		<h2>Listings</h2>
+		<table border="1px">
+ 			<tr>
+ 				<th>Address</th>
+ 				<th>Description</th>
+ 				<th>Type</th>
+ 				<th>Year Built</th>
+ 				<th>Property Size</th>
+ 				<th>Property Cost</th>
+ 				<th>Details</th>
+ 			</tr>
+		<c:forEach items="${listings}" var="listing">
+ 			<tr>
+	 			<td>${ listing.address }</td>
+	 			<td>${ listing.description }</td>
+	 			<td>${ listing.type }</td>
+	 			<td>${ listing.yearbuilt }</td>
+	 			<td>${ listing.size }</td>
+	 			<td>${ listing.cost }</td> 
+	 			<td><a href="#"><button>View</button></a></td>			
+ 			</tr>
+ 		</c:forEach>
+		</table>
+		
 		
 	</body>
 </html>
