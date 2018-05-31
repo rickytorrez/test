@@ -48,7 +48,6 @@
 			</form:label><br>
 			<form:label path="cost">Asking Price:
 				<form:input type="number" path="cost"></form:input>
-				<form:errors path="cost"/>
 			</form:label><br>
 			<input id="files" name="file" type="file">
 			<input type="submit" value="Create Listing"/>

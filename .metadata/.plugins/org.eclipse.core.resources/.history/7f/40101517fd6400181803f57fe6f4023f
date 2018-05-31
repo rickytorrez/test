@@ -81,7 +81,7 @@ public class ListingController {
 			return "redirect:/listings";
 		} else {
 			if(_result.hasErrors()) {
-				return "realtor";
+				return "/listings/realtor";
 			} else if(!file.isEmpty()) {
 				try {
 					byte[] bytes = file.getBytes();

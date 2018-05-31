@@ -52,7 +52,7 @@ public class ListingController {
 	@RequestMapping("/realtor")
 	public String realtor(HttpSession _session, Model _model, @ModelAttribute("listing") Listing listing) {
 		if(_session.getAttribute("id") == null) {
-			return "redirect:/users/new";
+			return "redirec:/users/new";
 		}
 		
 		User user = _uS.find( (Long) _session.getAttribute("id"));
@@ -81,13 +81,13 @@ public class ListingController {
 			return "redirect:/listings";
 		} else {
 			if(_result.hasErrors()) {
-				return "realtor";
+				return "/listings/realtor";
 			} else if(!file.isEmpty()) {
 				try {
 					byte[] bytes = file.getBytes();
 					
 					// creating the directory to store file
-					File dir = new File("src/main/webapp/images");
+					File dir = new File("src/main/resources/static/images");
 					if(!dir.exists())
 						dir.mkdir();
 					
