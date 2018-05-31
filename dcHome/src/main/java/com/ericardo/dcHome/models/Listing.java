@@ -1,6 +1,7 @@
 package com.ericardo.dcHome.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.validation.constraints.NotNull;
@@ -47,9 +49,7 @@ public class Listing {
 	
 	@NotNull(message="Please provide the cost of the property.")
 	private double cost;
-	
-	private String picture;
-	
+		
 	@DateTimeFormat(pattern="MM:dd:yyyy HH:mm:ss")
 	private Date createdAt;
 	 	
@@ -70,6 +70,19 @@ public class Listing {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	/*************************************** with picture ************************************/
+
+	@OneToMany(mappedBy="listing", fetch=FetchType.LAZY)
+	private List<Picture> pictures;
+	
+	public List<Picture> getPictures() {
+		return pictures;
+	}
+
+	public void setPictures(List<Picture> pictures) {
+		this.pictures = pictures;
 	}
 
 	/********************************* PERSIST AND UPDATE  **********************************/
@@ -156,14 +169,6 @@ public class Listing {
 
 	public void setCost(double cost) {
 		this.cost = cost;
-	}
-
-	public String getPicture() {
-		return picture;
-	}
-
-	public void setPicture(String picture) {
-		this.picture = picture;
 	}
 
 	public Date getCreatedAt() {

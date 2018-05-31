@@ -67,6 +67,19 @@ public class User {
 	public void setListings(List<Listing> listings) {
 		this.listings = listings;
 	}
+	
+	/************************************* with picture **************************************/
+
+	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+	private List<Picture> pictures;
+	
+	public List<Picture> getPictures() {
+		return pictures;
+	}
+
+	public void setPictures(List<Picture> pictures) {
+		this.pictures = pictures;
+	}
 
 	/********************************* PERSIST AND UPDATE  **********************************/
 	

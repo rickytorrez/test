@@ -13,7 +13,7 @@
 	<body>
 		<h1>Create a Listing</h1>
 		
-		<form:form method="POST" action="/listings/createListing" enctype="multipart/form-data" modelAttribute="listing">
+		<form:form method="POST" action="/listings/createListing" modelAttribute="listing">
 			<form:label path="address">Address:
 				<form:input path="address"></form:input>
 				<form:errors path="address"/>
@@ -25,9 +25,9 @@
 			</form:label><br>
 			<form:label path="type">Type:
 				<form:select path="type">
-					<form:option value="single-family-home">Single-Family Home</form:option>
-					<form:option value="townhome">Town House</form:option>
-					<form:option value="apartment">Apartment</form:option>
+					<form:option value="Single-Family">Single-Family Home</form:option>
+					<form:option value="TownHome">Town House</form:option>
+					<form:option value="Apartment">Apartment</form:option>
 				</form:select>
 			</form:label><br>
 			<form:label path="yearbuilt">Built Year:
@@ -50,8 +50,40 @@
 				<form:input type="number" path="cost"></form:input>
 				<form:errors path="cost"/>
 			</form:label><br>
-			<input id="files" name="file" type="file">
 			<input type="submit" value="Create Listing"/>
 		</form:form>
+		
+		<h1>My properties</h1>
+					<table border="1px">
+				<tr>
+					<th>Address</th>
+					<th>Description</th>
+					<th>Type</th>
+					<th>Year Built</th>
+					<th>Number of Bedrooms</th>
+					<th>Number of Bathrooms</th>
+					<th>Property Size</th>
+					<th>Cost</th>
+					<th>Details</th>
+				</tr>
+				<c:forEach items="${user.listings}" var="listing">
+				<tr>
+					<td>${ listing.address }</td>
+		 			<td>${ listing.description }</td>
+		 			<td>${ listing.type }</td>
+		 			<td>${ listing.yearbuilt }</td>
+		 			<td>${ listing.numberofrooms }</td>
+		 			<td>${ listing.numberofbathrooms }</td>
+		 			<td>${ listing.size } Square Feet </td>
+		 			<td>${ listing.cost }</td>
+		 			<td>
+		 				<a href="/listings/${listing.id}/edit"><button>Edit</button></a>
+		 			</td>
+				</tr>
+				</c:forEach>
+				
+				<tr></tr>
+			</table>
+		
 	</body>
 </html>
