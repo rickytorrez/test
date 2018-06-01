@@ -11,10 +11,61 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
- 		<h1>Registration</h1>
- 		<c:if test="${errors !=null}">
+<%-- 	    <c:if test="${errors != null}">
+	    		<c:forEach items="${errors}" var="err">
+	    			<p>${err.defaultMessage}</p>
+	    		</c:forEach>
+	    </c:if>
+ 		
+  		<form:form action="/users/new" method="post" modelAttribute="user">
+ 			<p>
+ 				<form:label path="firstname">First Name
+ 					<form:errors path="firstname"></form:errors>
+ 					<form:input type="text" path="firstname"></form:input>
+ 				</form:label>
+ 			</p>
+ 			<p>
+ 				<form:label path="lastname">Last Name
+ 					<form:errors path="lastname"></form:errors>
+ 					<form:input type="text" path="lastname"></form:input>
+ 				</form:label>
+ 			</p>
+ 			<p>
+ 				<form:label path="username">Username
+ 					<form:errors path="username"></form:errors>
+ 					<form:input type="text" path="username"></form:input>
+ 				</form:label>
+ 			</p>
+ 			<p>
+ 				<form:label path="email">Email
+ 					<form:errors path="email"></form:errors>
+ 					<form:input type="text" path="email"></form:input>
+ 				</form:label>
+ 			</p>
+ 			<p>
+ 				<form:label path="password">Password
+ 					<form:errors path="password"></form:errors>
+ 					<form:input type="password" path="password"></form:input>
+ 				</form:label>
+ 			</p>
+ 			<p>
+ 				<form:label path="realtor">Option:
+ 					<form:errors path="realtor"></form:errors>
+ 					<form:select path="realtor">
+ 						<form:option value="true">Realtor</form:option>
+ 						<form:option value="false">Buyer</form:option>
+ 					</form:select>
+ 				</form:label>
+ 			</p>
+ 			<input type="submit" value="Register"/>
+ 		</form:form>
+ 		
+ 		<c:if test="${error !=null}">
  				<p>${ error }</p>
- 		</c:if>
+ 		</c:if> --%>
+ 		
+ 		<h1>Registration</h1>
+ 		
  		<form action="/users/new" method="post">
  			<p>
 	 			<label>First Name</label>
@@ -24,31 +75,11 @@
 	 			<label>Last Name</label>
 	 			<input type="text" name="lastname">
  			</p>
- 			<p>
-	 			<label>Username</label>
-	 			<input type="text" name="username">
- 			</p>
- 			<p>
-	 			<label>E-mail</label>
-	 			<input type="text" name="email">
- 			</p>
- 			<p>
-	 			<label>Password</label>
-	 			<input type="password" name="password">
- 			</p>
- 			<p>
-	 			<label>Option</label>
-	 			<select name="realtor">
-	 				<option value="true">Realtor</option>
-	 				<option value="false">Buyer</option>
-	 			</select>
- 			</p>
- 			<input type="submit" value="Register"/>
+ 		
+ 		
  		</form>
  		
- 		<c:if test="${error !=null}">
- 				<p>${ error }</p>
- 		</c:if>
+ 		
  		
  		
  		<h1>Log In</h1>

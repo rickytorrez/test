@@ -35,6 +35,10 @@ public class UserController {
 	@RequestMapping("/new")
 	public String newUser(@ModelAttribute("user") User user, HttpSession _session, Model _model) {
 		_uS.logout(_session);
+		
+//		_model.addAttribute("allListings", _lS.all());
+//		System.out.println("allListings: ");
+//		System.out.println(_lS.all());
 		return "home";
 	}
 	
@@ -83,8 +87,55 @@ public class UserController {
 	}
 	
 	/*************************************** POST NEW USER ***********************************/
+//	@PostMapping("/new")
+//	public String create(@Valid @ModelAttribute("user") User user, BindingResult _result, RedirectAttributes _flash, HttpSession _session) {
+//		if(_result.hasErrors()) {
+//			_flash.addFlashAttribute("errors", _result.getAllErrors());
+//			return "redirect:/users/new";
+//		} else {
+//			User exists = _uS.findByEmail(user.getEmail());		
+//			
+//			if(exists == null) {
+//				User _user = _uS.create(user);
+//				_uS.login(_session, _user.getId());
+//				return "redirect:/listings";
+//			} else {
+//				_flash.addFlashAttribute("error", "A user wtih this e-mail already exists.");
+//				return "redirect:/users/new";
+//			}
+//		}
+//	}
+	
+	
+	/*************************************** POST NEW USER UPDATED ***********************************/
 	@PostMapping("/new")
-	public String create(@Valid @ModelAttribute("user") User user, BindingResult _result, RedirectAttributes _flash, HttpSession _session) {
+	public String create(User user, BindingResult _result, RedirectAttributes _flash, HttpSession _session, 
+			@RequestParam("firstname") String firstname,
+			@RequestParam("lastname") String lastname,
+			@RequestParam("username") String username,
+			@RequestParam("email") String email,
+			@RequestParam("password") String password,
+			@RequestParam("realtor") boolean realtor) {
+		if(firstname.length() < 1) {
+			_flash.addAttribute("errors", "Please provide a first name");
+			return "redirect:/users/new";
+		} 
+		if(lastname.length() < 1) {
+			_flash.addAttribute("error", "Please provide a last name");
+			return "redirect:/users/new";
+		}
+		if(username.length() < 1) {
+			_flash.addAttribute("error", "Please provide a last name");
+			return "redirect:/users/new";
+		}
+		if(email.length() < 4) {
+			_flash.addAttribute("error", "Please provide a valid e-mail");
+			return "redirect:/users/new";
+		}
+		if(password.length() < 8) {
+			_flash.addAttribute("error", "Please provide a password longer than eight characters");
+			return "redirect:/users/new";
+		}
 		if(_result.hasErrors()) {
 			_flash.addFlashAttribute("errors", _result.getAllErrors());
 			return "redirect:/users/new";
@@ -101,6 +152,7 @@ public class UserController {
 			}
 		}
 	}
+	
 
 	/*************************************** LOGIN USER **************************************/
 	@PostMapping("/login")

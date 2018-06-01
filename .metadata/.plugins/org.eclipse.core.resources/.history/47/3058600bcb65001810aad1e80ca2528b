@@ -12,7 +12,7 @@
 	</head>
 	<body>
  		<h1>Registration</h1>
- 		<c:if test="${errors !=null}">
+ 		<c:if test="${error !=null}">
  				<p>${ error }</p>
  		</c:if>
  		<form action="/users/new" method="post">

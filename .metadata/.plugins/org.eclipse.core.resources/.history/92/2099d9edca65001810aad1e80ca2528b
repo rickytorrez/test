@@ -12,9 +12,7 @@
 	</head>
 	<body>
  		<h1>Registration</h1>
- 		<c:if test="${errors !=null}">
- 				<p>${ error }</p>
- 		</c:if>
+ 		
  		<form action="/users/new" method="post">
  			<p>
 	 			<label>First Name</label>
@@ -46,9 +44,7 @@
  			<input type="submit" value="Register"/>
  		</form>
  		
- 		<c:if test="${error !=null}">
- 				<p>${ error }</p>
- 		</c:if>
+ 		
  		
  		
  		<h1>Log In</h1>

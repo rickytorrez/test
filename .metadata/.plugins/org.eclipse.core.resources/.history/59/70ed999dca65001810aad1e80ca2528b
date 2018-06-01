@@ -12,9 +12,7 @@
 	</head>
 	<body>
  		<h1>Registration</h1>
- 		<c:if test="${errors !=null}">
- 				<p>${ error }</p>
- 		</c:if>
+ 		
  		<form action="/users/new" method="post">
  			<p>
 	 			<label>First Name</label>
@@ -39,16 +37,14 @@
  			<p>
 	 			<label>Option</label>
 	 			<select name="realtor">
-	 				<option value="true">Realtor</option>
-	 				<option value="false">Buyer</option>
+	 				<option value="True">Realtor</option>
+	 				<option value="Fasle">Buyer</option>
 	 			</select>
  			</p>
  			<input type="submit" value="Register"/>
  		</form>
  		
- 		<c:if test="${error !=null}">
- 				<p>${ error }</p>
- 		</c:if>
+ 		
  		
  		
  		<h1>Log In</h1>

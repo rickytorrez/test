@@ -35,6 +35,10 @@ public class UserController {
 	@RequestMapping("/new")
 	public String newUser(@ModelAttribute("user") User user, HttpSession _session, Model _model) {
 		_uS.logout(_session);
+		
+//		_model.addAttribute("allListings", _lS.all());
+//		System.out.println("allListings: ");
+//		System.out.println(_lS.all());
 		return "home";
 	}
 	
