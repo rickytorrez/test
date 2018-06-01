@@ -11,13 +11,13 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-<%-- 	    <c:if test="${errors != null}">
+	    <c:if test="${errors != null}">
 	    		<c:forEach items="${errors}" var="err">
 	    			<p>${err.defaultMessage}</p>
 	    		</c:forEach>
 	    </c:if>
  		
-  		<form:form action="/users/new" method="post" modelAttribute="user">
+ 		<form:form action="/users/new" method="post" modelAttribute="user">
  			<p>
  				<form:label path="firstname">First Name
  					<form:errors path="firstname"></form:errors>
@@ -62,11 +62,7 @@
  		
  		<c:if test="${error !=null}">
  				<p>${ error }</p>
- 		</c:if> --%>
- 		
- 		<form action ="/users/test" method="post">
- 			<input type="submit" value="TEST" />
- 		</form>
+ 		</c:if>
  		
  		<form action="/users/login" method="post">
  			<p>
@@ -80,15 +76,9 @@
  				</label>		
  			</p>
  			<input type="submit" value="Login"/>
- 		</form> 
+ 		</form>
  		
  		<h1>Properties for sale</h1>
- 		
- 			<form method="GET" action="/users/search" >
-				<input type="text" name="search" />
-				<input type="submit" value="Search" />
-			</form>
- 		
  			<table border="1px">
 				<tr>
 					<th>Address</th>

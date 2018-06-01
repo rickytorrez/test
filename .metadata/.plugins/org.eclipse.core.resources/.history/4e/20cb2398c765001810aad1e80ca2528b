@@ -11,7 +11,7 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-<%-- 	    <c:if test="${errors != null}">
+	    <c:if test="${errors != null}">
 	    		<c:forEach items="${errors}" var="err">
 	    			<p>${err.defaultMessage}</p>
 	    		</c:forEach>
@@ -62,11 +62,7 @@
  		
  		<c:if test="${error !=null}">
  				<p>${ error }</p>
- 		</c:if> --%>
- 		
- 		<form action ="/users/test" method="post">
- 			<input type="submit" value="TEST" />
- 		</form>
+ 		</c:if>
  		
  		<form action="/users/login" method="post">
  			<p>

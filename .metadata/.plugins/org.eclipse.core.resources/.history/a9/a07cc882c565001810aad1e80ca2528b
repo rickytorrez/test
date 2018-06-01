@@ -1,7 +1,5 @@
 package com.ericardo.dcHome.controllers;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ericardo.dcHome.models.Listing;
 import com.ericardo.dcHome.models.User;
 import com.ericardo.dcHome.services.ListingService;
 import com.ericardo.dcHome.services.UserService;
@@ -45,47 +42,42 @@ public class UserController {
 	
 	/*************************************** SEARCH BAR *************************************/
 	
-	public boolean scrub(String needle, String haystack) {								
-		needle = needle.toLowerCase();												
-		
-		for(int j=0; j<haystack.length()-needle.length()+1;j++) {						
-			String result = haystack.substring(j, j+needle.length()).toLowerCase();
-
-			if(result.indexOf(needle) != -1) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	@RequestMapping("/search")
-	public String search(@RequestParam("search") String search, HttpSession _session, Model _model) {
-		search = search.toLowerCase();
-		
-		ArrayList<Listing> allListings = _lS.all();
-		System.out.println("Previous All listings");
-		System.out.println(allListings);
-		ArrayList<Listing> listings = new ArrayList<Listing>();
-		System.out.println("Previous Listings new array:");
-		System.out.println(listings);
-		
-		for(Listing listing: allListings) {
-			if(scrub(search, listing.getAddress()) && !listings.contains(listing)) {				
-				listings.add(listing);
-			}
-			if(scrub(search, listing.getType()) && !listings.contains(listing)) {					
-				listings.add(listing);
-			}
-			if(scrub(search, Double.toString(listing.getCost())) && !listings.contains(listing)) {	
-				listings.add(listing);
-			}
-		}
-		
-		_model.addAttribute("listings", listings);
-		System.out.println("Updated listings");
-		System.out.println(listings);
-		return "home";
-	}
+//	public boolean scrub(String needle, String haystack) {								
+//		needle = needle.toLowerCase();												
+//		
+//		for(int j=0; j<haystack.length()-needle.length()+1;j++) {						
+//			String result = haystack.substring(j, j+needle.length()).toLowerCase();
+//
+//			if(result.indexOf(needle) != -1) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+////	
+//	@RequestMapping("/search")
+//	public String search(@RequestParam("search") String search, HttpSession _session, Model _model) {
+//		search = search.toLowerCase();
+//		
+//		ArrayList<Listing> allListings = _lS.all();
+//		ArrayList<Listing> listings = new ArrayList<Listing>();
+//		
+//		for(Listing listing: allListings) {
+//			if(scrub(search, listing.getAddress()) && !listings.contains(listing)) {				
+//				listings.add(listing);
+//			}
+//			if(scrub(search, listing.getType()) && !listings.contains(listing)) {					
+//				listings.add(listing);
+//			}
+//			if(scrub(search, Double.toString(listing.getCost())) && !listings.contains(listing)) {	
+//				listings.add(listing);
+//			}
+//		}
+//		
+//		_model.addAttribute("listings", listings);
+//		
+//		return "home";
+//	}
 	
 	/*************************************** POST NEW USER ***********************************/
 	@PostMapping("/new")

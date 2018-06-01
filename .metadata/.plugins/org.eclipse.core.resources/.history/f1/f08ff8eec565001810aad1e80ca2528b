@@ -63,11 +63,7 @@ public class UserController {
 		search = search.toLowerCase();
 		
 		ArrayList<Listing> allListings = _lS.all();
-		System.out.println("Previous All listings");
-		System.out.println(allListings);
 		ArrayList<Listing> listings = new ArrayList<Listing>();
-		System.out.println("Previous Listings new array:");
-		System.out.println(listings);
 		
 		for(Listing listing: allListings) {
 			if(scrub(search, listing.getAddress()) && !listings.contains(listing)) {				
@@ -82,8 +78,7 @@ public class UserController {
 		}
 		
 		_model.addAttribute("listings", listings);
-		System.out.println("Updated listings");
-		System.out.println(listings);
+		
 		return "home";
 	}
 	
