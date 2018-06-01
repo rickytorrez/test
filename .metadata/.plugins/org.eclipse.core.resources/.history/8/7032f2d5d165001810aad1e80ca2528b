@@ -50,7 +50,7 @@ public class ListingController {
 			_model.addAttribute("user", user);
 		}	
 		
-		_model.addAttribute("listings", _lS.all());
+		_model.addAttribute("allListings", _lS.all());
 		return "listings";
 	}
 	

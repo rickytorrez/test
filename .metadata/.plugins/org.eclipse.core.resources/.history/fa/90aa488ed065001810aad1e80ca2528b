@@ -80,19 +80,6 @@ public class User {
 	public void setPictures(List<Picture> pictures) {
 		this.pictures = pictures;
 	}
-	
-	/************************************* with favorite ************************************/
-	
-	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
-	private List<Favorite> favorites;
-
-	public List<Favorite> getFavorites() {
-		return favorites;
-	}
-
-	public void setFavorites(List<Favorite> favorites) {
-		this.favorites = favorites;
-	}
 
 	/********************************* PERSIST AND UPDATE  **********************************/
 	

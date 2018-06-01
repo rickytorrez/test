@@ -84,20 +84,6 @@ public class Listing {
 	public void setPictures(List<Picture> pictures) {
 		this.pictures = pictures;
 	}
-	
-	/*************************************** with favorite **********************************/
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="favorite_id")
-	private Favorite favorite;
-
-	public Favorite getFavorite() {
-		return favorite;
-	}
-
-	public void setFavorite(Favorite favorite) {
-		this.favorite = favorite;
-	}
 
 	/********************************* PERSIST AND UPDATE  **********************************/
 	 	
