@@ -1,0 +1,56 @@
+package com.ericardo.dcHome.controllers;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ericardo.dcHome.models.User;
+import com.ericardo.dcHome.services.FavoriteService;
+import com.ericardo.dcHome.services.ListingService;
+import com.ericardo.dcHome.services.UserService;
+
+@Controller
+@RequestMapping("/favorite")
+public class FavoriteController {
+	
+	@Autowired
+	private FavoriteService _fS;
+	
+	@Autowired
+	private ListingService _lS;
+	
+	@Autowired
+	private UserService _uS;
+	
+	
+	@PostMapping("/{id}/add")
+	public String addListingToFave(@PathVariable("id") Long id, HttpSession _session) {
+		
+		if(_session.getAttribute("id") == null) {
+			return "redirect:/listings";
+		}
+		
+		if(_session.getAttribute("id") != null) {
+			User user = _uS.find( (Long) _session.getAttribute("id") );
+			System.out.println("User ID: ");
+			System.out.println(user.getId());
+		}
+		
+		
+		System.out.println("Listing ID: ");
+		System.out.println(id);
+		
+		
+		return "favorites";
+	}
+	
+	
+	
+	
+	
+	
+}

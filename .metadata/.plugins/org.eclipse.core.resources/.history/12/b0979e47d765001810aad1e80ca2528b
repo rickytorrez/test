@@ -1,0 +1,36 @@
+package com.ericardo.dcHome.services;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ericardo.dcHome.models.Favorite;
+import com.ericardo.dcHome.repositories.FavoriteRepository;
+
+@Service
+public class FavoriteService {
+
+	@Autowired
+	private FavoriteRepository _fR;
+	
+	private void create(Favorite favorite) {
+		_fR.save(favorite);
+	}
+	
+	public Favorite find(Long id) {
+		return _fR.findOne(id);
+	}
+	
+	public void update(Favorite favorite) {
+		_fR.save(favorite);
+	}
+	
+	public void destroy(Long id) {
+		_fR.delete(id);
+	}
+	
+	public ArrayList<Favorite> all(){
+		return (ArrayList<Favorite>) _fR.findAll();
+	}
+}

@@ -11,7 +11,13 @@
 		<title>Listings</title>
 	</head>
 		<body>
-			<h1>Listing</h1>
+			<c:if test="${user != null}">
+				<a href="/listings">Home</a>
+				<a href="/users/new">Logout</a>
+				<h3>Welcome, ${user.firstname }</h1>
+			</c:if>
+		
+			<h1>Listings</h1>
 			<table border="1px">
 				<tr>
 					<th>Address</th>
@@ -32,6 +38,13 @@
 				
 				<tr></tr>
 			</table>
+			<hr>
+				<h1>Your favorites</h1>
+				
+			<c:forEach items="${user.getFaveListings() }" var="fave">
+					<p>${fave.address}</p>
+					<p>${fave.description}</p>
+				</c:forEach>
 			
 		</body>
 </html>

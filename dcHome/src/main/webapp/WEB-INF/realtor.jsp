@@ -11,6 +11,13 @@
 		<title>Realtor</title>
 	</head>
 	<body>
+		<c:if test="${user != null && user!= buyer}">
+			<a href="/listings">View Listings</a>
+			<a href="/users/new">Logout</a>
+			<h3>Welcome, ${user.firstname }</h1>
+		</c:if>
+	
+	
 		<h1>Create a Listing</h1>
 		
 		<form:form method="POST" action="/listings/createListing" modelAttribute="listing">
@@ -77,7 +84,7 @@
 		 			<td>${ listing.size } Square Feet </td>
 		 			<td>${ listing.cost }</td>
 		 			<td>
-		 				<a href="/listings/${listing.id}/edit"><button>Edit</button></a>
+		 				<a href="/listings/${listing.id}/edit"><button>Add Images</button></a>
 		 			</td>
 				</tr>
 				</c:forEach>

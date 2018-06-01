@@ -1,6 +1,0 @@
-package com.ericardo.dcHome.controllers;
-
-@Controller
-public class UserController {
-
-}

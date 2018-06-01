@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -81,17 +84,22 @@ public class User {
 		this.pictures = pictures;
 	}
 	
-	/************************************* with favorite ************************************/
+	/********************** many to many with listing for favorite images *******************/
 	
-	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
-	private List<Favorite> favorites;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name = "user_fave_properties",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "listing_id")
+	)
+	private List<Listing> faveListings;
 
-	public List<Favorite> getFavorites() {
-		return favorites;
+	public List<Listing> getFaveListings() {
+		return faveListings;
 	}
 
-	public void setFavorites(List<Favorite> favorites) {
-		this.favorites = favorites;
+	public void setFaveListings(List<Listing> faveListings) {
+		this.faveListings = faveListings;
 	}
 
 	/********************************* PERSIST AND UPDATE  **********************************/
