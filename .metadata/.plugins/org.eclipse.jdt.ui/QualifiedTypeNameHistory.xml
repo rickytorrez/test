@@ -50,6 +50,6 @@
 <fullyQualifiedTypeName name="com.ericardo.dcHome.services.UserService"/>
 <fullyQualifiedTypeName name="com.ericardo.dcHome.services.ListingService"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.ericardo.dcHome.models.Listing"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

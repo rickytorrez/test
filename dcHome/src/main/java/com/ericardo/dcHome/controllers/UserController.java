@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,20 +28,15 @@ public class UserController {
 	@Autowired
 	private ListingService _lS;
 	
-	/*************************************** ADMIN DASHBOARD *********************************/
-	@RequestMapping("dashboard")
-	public String dashboard(Model _model, HttpSession _session) {
-		if(!_uS.isValid(_session)) 
-			return _uS.redirect();
-		_model.addAttribute("users", _uS.all());		
-		_model.addAttribute("listings", _lS.all());
-		return "dashboard";
-	}
-	
+	/*************************************** REGISTRATION ************************************/
 	/*************************************** REG/LOGIN ***************************************/
 	@RequestMapping("/new")
-	public String newUser(@ModelAttribute("user") User user, HttpSession _session) {
+	public String newUser(@ModelAttribute("user") User user, HttpSession _session, Model _model) {
 		_uS.logout(_session);
+		
+		_model.addAttribute("listings", _lS.all());
+		System.out.println("Listings: ");
+		System.out.println(_lS.all());
 		return "home";
 	}
 	
@@ -105,5 +101,16 @@ public class UserController {
 	@RequestMapping("/logout")
 	public String logout(HttpSession _session) {
 		return _uS.redirect();
+	}
+	
+	/*************************************** ADMIN SIDE **************************************/
+	/*************************************** ADMIN DASHBOARD *********************************/
+	@RequestMapping("dashboard")
+	public String dashboard(Model _model, HttpSession _session) {
+		if(!_uS.isValid(_session)) 
+			return _uS.redirect();
+		_model.addAttribute("users", _uS.all());		
+		_model.addAttribute("listings", _lS.all());
+		return "dashboard";
 	}
 }

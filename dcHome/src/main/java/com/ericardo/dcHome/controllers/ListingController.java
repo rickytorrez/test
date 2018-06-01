@@ -3,6 +3,7 @@ package com.ericardo.dcHome.controllers;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -58,24 +59,59 @@ public class ListingController {
 	
 	@RequestMapping("/{id}")
 	public String find(@PathVariable("id") Long id, Model _model, HttpSession _session) {
-		if(_session.getAttribute("id") == null) {
+		if(_session.getAttribute("id") != null) {
 			User user = _uS.find( (Long) _session.getAttribute("id"));
 			_model.addAttribute("user", user);
 		}
 		_model.addAttribute("listing", _lS.find(id));
-		
-		System.out.println("Listing Pictures");
-		System.out.println(_lS.find(id).getPictures());
-		
 		return "singleListing";
 	}
 	
 	/*************************************** SEARCH BAR *************************************/
 	
-	
-	
-	
-	
+//	public boolean scrub(String needle, String haystack) {								
+//		needle = needle.toLowerCase();												
+//		
+//		for(int j=0; j<haystack.length()-needle.length()+1;j++) {						
+//			String result = haystack.substring(j, j+needle.length()).toLowerCase();
+//
+//			if(result.indexOf(needle) != -1) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+//	
+//	@RequestMapping("/search")
+//	public String search(@RequestParam("search") String search, HttpSession _session, Model _model) {
+//		search = search.toLowerCase();
+//		
+////		User user;
+////		
+////		if(_session.getAttribute("id") != null) {
+////			user = _uS.find( (Long) _session.getAttribute("id"));
+////			_model.addAttribute("user", user);
+////		}
+//		
+//		ArrayList<Listing> allListings = _lS.all();
+//		ArrayList<Listing> listings = new ArrayList<Listing>();
+//		
+//		for(Listing listing: allListings) {
+//			if(scrub(search, listing.getAddress()) && !listings.contains(listing)) {				
+//				listings.add(listing);
+//			}
+//			if(scrub(search, listing.getType()) && !listings.contains(listing)) {					
+//				listings.add(listing);
+//			}
+//			if(scrub(search, Double.toString(listing.getCost())) && !listings.contains(listing)) {	
+//				listings.add(listing);
+//			}
+//		}
+//		
+//		_model.addAttribute("listings", listings);
+//		
+//		return "home";
+//	}
 	
 	/*************************************** REALTOR SIDE ***********************************/
 	/*************************************** AGENT DASHBOARD ********************************/
@@ -87,14 +123,12 @@ public class ListingController {
 		}
 		
 		User user = _uS.find( (Long) _session.getAttribute("id"));
-		
 		if(!user.isRealtor() && !user.isAdmin()) {
 			return "redirect:/listings";
 		}
 		
 		_model.addAttribute("user", user);
 		_model.addAttribute("listing", new Listing());
-		
 		return "realtor";		
 	}
 	
@@ -140,7 +174,7 @@ public class ListingController {
 		if(!user.isRealtor() && !user.isAdmin()) {
 			return "redirect:/listings";
 		}
-		
+			// File upload
 			if(!file.isEmpty()) {
 				try {
 					byte[] bytes = file.getBytes();
@@ -173,6 +207,4 @@ public class ListingController {
 			}
 			return "redirect:/listings";
 		}
-		
-
 }
