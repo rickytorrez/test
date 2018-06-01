@@ -48,7 +48,11 @@ public class ListingController {
 		if(_session.getAttribute("id") != null) {
 			user = _uS.find((Long) _session.getAttribute("id"));
 			_model.addAttribute("user", user);
-		}	
+		}
+		
+		
+		
+		
 		
 		_model.addAttribute("listings", _lS.all());
 		return "listings";
@@ -63,10 +67,6 @@ public class ListingController {
 			_model.addAttribute("user", user);
 		}
 		_model.addAttribute("listing", _lS.find(id));
-		
-		System.out.println("Listing Pictures");
-		System.out.println(_lS.find(id).getPictures());
-		
 		return "singleListing";
 	}
 	

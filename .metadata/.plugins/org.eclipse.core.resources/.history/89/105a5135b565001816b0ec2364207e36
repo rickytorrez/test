@@ -64,8 +64,8 @@ public class ListingController {
 		}
 		_model.addAttribute("listing", _lS.find(id));
 		
-		System.out.println("Listing Pictures");
-		System.out.println(_lS.find(id).getPictures());
+		System.out.println("Listing");
+		System.out.println(_lS.find(id));
 		
 		return "singleListing";
 	}

@@ -20,10 +20,5 @@
 		<p>Asking price: $${listing.cost}</p>
 		<p>Number of Bedrooms: ${listing.numberofrooms}</p>
 		<p>Number of Bathrooms: ${listing.numberofbathrooms}</p>
-		
-		<c:forEach items="${listing.pictures }" var="picture">
-			<div><img src="/images/${picture.image }" alt="${picture.image }"/></div>
-		</c:forEach>
-		
 	</body>
 </html>

@@ -63,10 +63,6 @@ public class ListingController {
 			_model.addAttribute("user", user);
 		}
 		_model.addAttribute("listing", _lS.find(id));
-		
-		System.out.println("Listing Pictures");
-		System.out.println(_lS.find(id).getPictures());
-		
 		return "singleListing";
 	}
 	
