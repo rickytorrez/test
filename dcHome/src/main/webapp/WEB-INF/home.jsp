@@ -76,104 +76,113 @@
                 <br>Rental Properties
             </div>
             <div class="w3-quarter">
-                <span class="w3-xxlarge">100+</span>
-                <br>Listings
-            </div>
-            <div class="w3-quarter">
-                <span class="w3-xxlarge">50+</span>
-                <br>Realtors Available
-            </div>
-        </div>
+                	<span class="w3-xxlarge">100+</span>
+                	<br>Listings
+            	</div>
+            	<div class="w3-quarter">
+                	<span class="w3-xxlarge">50+</span>
+                	<br>Realtors Available
+            	</div>
+        	</div>
 
 		<!-- Listing Section -->
-        <div class="w3-container" style="padding:128px 16px" id="listings">
-            <h3 class="w3-center">LISTINGS</h3>
-            <p class="w3-center w3-large">Our most recent listings</p>
+        	<div class="w3-container" style="padding:128px 16px" id="listings">
+            	<h3 class="w3-center">LISTINGS</h3>
+            	<p class="w3-center w3-large">Our most recent listings</p>
 
-            <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
-                <div class="w3-col l3 m6 w3-margin-bottom">
-                    <div class="w3-card">
-                        <img src="/w3images/team2.jpg" alt="John" style="width:100%">
-                        <div class="w3-container">
-                            <h3>John Doe</h3>
-                            <p class="w3-opacity">CEO & Founder</p>
-                            <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-                            <p>
-                                <button class="w3-button w3-light-grey w3-block">
-                                    <i class="fa fa-envelope"></i> Contact</button>
-                            </p>
-                        </div>
-                    </div>
+            	<div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+            		<c:forEach items="${allListings }" var="x">
+	                <div class="w3-col l3 m6 w3-margin-bottom">
+	                    <div class="w3-card">
+	                    <td>
+		                    <c:if test="${x.getPictures().size() > 0 }">
+				 				<img src="/images/${x.getPictures().get(0).image}" alt="${x.getPictures().get(0)}" style="width:100%">
+			 				</c:if>
+		 				</td>
+	                        <div class="w3-container">
+	                            <h3>${x.address}</h3>
+	                            <p class="w3-opacity">${x.type}</p>
+	                            <p>${x.description }</p>
+	                            <p>
+	                                <a href="/listings/${listing.id}"><button class="w3-button w3-light-grey w3-block">
+	                                    <i class="fa fa-search"></i>View Listing</button></a>
+	                            </p>
+	                        </div>
+	                    </div>
+	                </div>
+                </c:forEach>
+			</div>
+		</div>
+
+		<!-- Contact Section -->
+        <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
+            <h3 class="w3-center">CONTACT</h3>
+            <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
+            <div class="w3-row-padding" style="margin-top:64px">
+                <div class="w3-half">
+                    <p>
+                        <i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Washington DC, US</p>
+                    <p>
+                        <i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: 1-800-1HOMEDC</p>
+                    <p>
+                        <i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: info@dchome.com</p>
+                    <br>
+                    <form action="/action_page.php" target="_blank">
+                        <p>
+                            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+                        </p>
+                        <p>
+                            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+                        </p>
+                        <p>
+                            <input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject">
+                        </p>
+                        <p>
+                            <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+                        </p>
+                        <p>
+                            <button class="w3-button w3-black" type="submit">
+                                <i class="fa fa-paper-plane"></i> SEND MESSAGE
+                            </button>
+                        </p>
+                    </form>
+                </div>
+                <div class="w3-half">
+                    <!-- Add Google Maps -->
+                    <div id="googleMap" class="w3-greyscale-max" style="width:100%;height:510px;"></div>
                 </div>
             </div>
         </div>
 
-
-
-
-
-
-
-
+        <!-- Footer -->
+        <footer class="w3-center w3-black w3-padding-64">
+            <a href="#home" class="w3-button w3-light-grey">
+                <i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+            <div class="w3-xlarge w3-section">
+                <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                <i class="fa fa-instagram w3-hover-opacity"></i>
+                <i class="fa fa-snapchat w3-hover-opacity"></i>
+                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                <i class="fa fa-twitter w3-hover-opacity"></i>
+                <i class="fa fa-linkedin w3-hover-opacity"></i>
+            </div>
+            <p>Powered by
+                <a href="https://ertorrez.com" title="W3.CSS" target="_blank" class="w3-hover-text-green">E. Ricardo Torrez</a>
+            </p>
+        </footer>
+        
+		<!-- jquery -->
+ 		<script src="<c:url value="/resources/dcHome/js/jquery.js" />"></script>
+ 		<!-- bootstrap js -->
+ 		<script src="<c:url value="/resources/dcHome/js/bootstrap/bootstrap.js" />"></script>
+ 		<!-- script js -->
+ 		<script src="<c:url value="/resources/dcHome/js/script.js" />"></script>
+        <!-- google API -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ-UwG2QhQze8fgx2B4KPAplCRT670Leo&callback=myMap"></script>
 	
 	
 		
-	
-	
-	<!-- temp space -->
-    <section>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-    </section>
+
 	
  		<h1>Registration</h1>
  		<c:if test="${errors !=null}">
@@ -272,11 +281,7 @@
 				
 				<tr></tr>
 			</table>
- 		<!-- jquery -->
- 		<script src="<c:url value="/resources/dcHome/js/jquery.js" />"></script>
- 		<!-- bootstrap js -->
- 		<script src="<c:url value="/resources/dcHome/js/bootstrap/bootstrap.js" />"></script>
- 		<!-- custom js -->
+ 		
  		
 	</body>
 </html>

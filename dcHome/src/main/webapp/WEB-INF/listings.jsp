@@ -32,6 +32,9 @@
 		 			<td>${ listing.description }</td>
 		 			<td>${ listing.type }</td>
 		 			<td><a href="/listings/${listing.id}"><button>View</button></a></td>
+		 			<c:if test="${listing.getPictures().size() > 0 }">
+			 			<td><img src="/images/${listing.getPictures().get(0).image}" alt="${listing.getPictures().get(0)}"></td>
+		 			</c:if>
 
 				</tr>
 				</c:forEach>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,6 +36,10 @@ public class UserController {
 	@RequestMapping("/new")
 	public String newUser(@ModelAttribute("user") User user, HttpSession _session, Model _model) {
 		_uS.logout(_session);
+		
+		_model.addAttribute("allListings", _lS.all());
+		System.out.println("All Listings:");
+		System.out.println(_lS.all());
 		return "home";
 	}
 	
