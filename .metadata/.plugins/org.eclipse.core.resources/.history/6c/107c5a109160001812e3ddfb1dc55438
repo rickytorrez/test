@@ -1,7 +1,0 @@
-package com.ericardo.dcHome.repositories;
-
-import org.springframework.data.repository.CrudRepository;
-
-public interface UserRepository extends CrudRepository<T, ID> {
-
-}
