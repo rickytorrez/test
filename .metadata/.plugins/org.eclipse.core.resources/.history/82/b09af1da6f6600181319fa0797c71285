@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+/* ==================================
+            home
+================================== */
+
+#home {
+	background-color: none;
+	height: 100%;
+}
+
+#home-bg-picture {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    background: url('../img/dcHomeBG2.jpg') no-repeat;
+    background-size: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+h1 {
+	color:red;
+}
