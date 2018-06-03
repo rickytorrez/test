@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ericardo.dcHome.models.Listing;
 import com.ericardo.dcHome.models.User;
 import com.ericardo.dcHome.services.ListingService;
+import com.ericardo.dcHome.services.MessageService;
 import com.ericardo.dcHome.services.UserService;
 
 @Controller
@@ -29,6 +30,9 @@ public class UserController {
 	
 	@Autowired
 	private ListingService _lS;
+	
+	@Autowired
+	private MessageService _mS;
 	
 	/*************************************** REGISTRATION ************************************/
 	/*************************************** REG/LOGIN ***************************************/
@@ -157,6 +161,7 @@ public class UserController {
 			return _uS.redirect();
 		_model.addAttribute("users", _uS.all());		
 		_model.addAttribute("listings", _lS.all());
+		_model.addAttribute("messages", _mS.all());
 		return "dashboard";
 	}
 }

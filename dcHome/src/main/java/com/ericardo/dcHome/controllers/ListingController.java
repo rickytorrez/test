@@ -80,7 +80,6 @@ public class ListingController {
 		if(!user.isRealtor() && !user.isAdmin()) {
 			return "redirect:/listings";
 		}
-		
 		_model.addAttribute("user", user);
 		_model.addAttribute("listing", new Listing());
 		return "realtor";		
@@ -176,4 +175,6 @@ public class ListingController {
 		
 		return "redirect:/listings";
 	}
+	
+	/************************************* EDIT FAVORITE  *************************************/
 }
