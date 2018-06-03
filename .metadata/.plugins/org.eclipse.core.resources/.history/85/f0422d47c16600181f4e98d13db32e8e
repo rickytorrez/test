@@ -1,0 +1,30 @@
+package com.ericardo.dcHome.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ericardo.dcHome.models.Message;
+import com.ericardo.dcHome.repositories.MessageRepository;
+
+@Service
+public class MessageService {
+	
+	@Autowired
+	private MessageRepository _mR;
+	
+	public void create(Message message) {
+		_mR.save(message);
+	}
+	
+	public Message find(Long id) {
+		return _mR.findOne(id);
+	}
+	
+	public void update(Message message) {
+		_mR.save(message);
+	}
+	
+	public void delete(Long id) {
+		_mR.delete(id);
+	}
+}

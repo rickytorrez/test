@@ -1,0 +1,5 @@
+package com.ericardo.dcHome.services;
+
+public class MessageService {
+
+}

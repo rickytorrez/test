@@ -8,17 +8,16 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<!-- bootstrap -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<!-- w3 -->
 		<link href="<c:url value="/resources/dcHome/css/w3/w3.css" />" rel="stylesheet">
-		<!-- W3 -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-		
 		<!-- font -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 		<!-- font-awesome -->
 		<link href="<c:url value="/resources/dcHome/css/font-awesome/css/font-awesome.min.css" />" rel="stylesheet">
 		<!-- main stylesheet -->		
 		<link href="<c:url value="/resources/dcHome/css/style.css" />" rel="stylesheet">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 		<title>DC Home</title>
 	</head>
@@ -116,7 +115,7 @@
 
 		<!-- Contact Section -->
         	<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
-            	<h3 class="w3-center">BOOK AN APPOINTMENT</h3>
+            	<h3 class="w3-center">CONTACT</h3>
             	<p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
             	<div class="w3-row-padding" style="margin-top:64px">
                 	<div class="w3-half">
@@ -124,18 +123,18 @@
                     	<p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: 1-800-1HOMEDC</p>
                     	<p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: info@dchome.com</p>
                     	<br>
-                    	<form action="/action_page.php" target="_blank">
+                    	<form action="/message/new" method="POST">
                         	<p>
-                            	<input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+                            	<input class="w3-input w3-border" type="text" placeholder="Name" required name="name">
                         	</p>
                         	<p>
-                            	<input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+                            	<input class="w3-input w3-border" type="text" placeholder="Email" required name="email">
                         	</p>
                         	<p>
-                            	<input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject">
+                            	<input class="w3-input w3-border" type="text" placeholder="Subject" required name="subject">
                         	</p>
                         	<p>
-                            	<input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+                            	<input class="w3-input w3-border" type="text" placeholder="Message" required name="content">
                         	</p>
                         	<p>
                             	<button class="w3-button w3-black" type="submit">
@@ -183,12 +182,12 @@
 			          	<form action="/users/login" method="post">
 			 				<p>
 			 					<label>Email
-			 						<input type="text" name="email"/>
+			 						<input type="text" required name="email"/>
 			 					</label>		
 			 				</p>
 			 				<p>
 			 					<label>Password	
-			 						<input type="password" name="password"/>
+			 						<input type="password" required name="password"/>
 			 					</label>		
 			 				</p>
 			 				<input type="submit" value="Login"/>
@@ -216,23 +215,23 @@
 						<form action="/users/new" method="post">
 				 			<p>
 					 			<label>First Name</label>
-					 			<input type="text" name="firstname">
+					 			<input type="text" required name="firstname">
 				 			</p>
 				 			<p>
 					 			<label>Last Name</label>
-					 			<input type="text" name="lastname">
+					 			<input type="text" required name="lastname">
 				 			</p>
 				 			<p>
 					 			<label>Username</label>
-					 			<input type="text" name="username">
+					 			<input type="text" required name="username">
 				 			</p>
 				 			<p>
 					 			<label>E-mail</label>
-					 			<input type="text" name="email">
+					 			<input type="text" required name="email">
 				 			</p>
 				 			<p>
 					 			<label>Password</label>
-					 			<input type="password" name="password">
+					 			<input type="password" required name="password">
 				 			</p>
 				 			<p>
 					 			<label>Option</label>
