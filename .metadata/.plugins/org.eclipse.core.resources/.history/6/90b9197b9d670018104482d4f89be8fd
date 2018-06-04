@@ -67,17 +67,5 @@
 				
 				<tr></tr>
 			</table>
-			
-			
-			
-			<br>
-			<p>User Favorite Properties</p>
-			<c:forEach items="${user.getFaveListings() }" var="fave">
-					<p>${fave.address}</p>
-					<p>${fave.description}</p>
-				</c:forEach>
-			
-			
-			
 	</body>
 </html>
