@@ -175,13 +175,5 @@
 	                	</div>
 			</div>
 		</div>
-		<!-- jquery 3.3.1-->
-	    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	    	<!-- bootstrap-->
-    		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- 		<!-- script js -->
- 		<script src="<c:url value="/resources/dcHome/js/script.js" />"></script>
-        <!-- google API -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ-UwG2QhQze8fgx2B4KPAplCRT670Leo&callback=myMap"></script>
 	</body>
 </html>
