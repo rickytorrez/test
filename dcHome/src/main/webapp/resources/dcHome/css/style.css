@@ -22,3 +22,11 @@ body, html {
 .w3-bar .w3-button {
     padding: 16px;
 }
+
+.w3-card{
+    padding: 5px;
+}
+
+.img-gallery-1, .img-gallery-2{
+    margin-top:5px;
+}
