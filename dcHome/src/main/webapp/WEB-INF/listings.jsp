@@ -70,7 +70,7 @@
         <div class="w3-container" style="padding:100px 16px" id="listings">
             <h3 class="w3-center">LISTINGS</h3>
             <p class="w3-center w3-large">Available properties</p>
-
+	
             	<div class="w3-row-padding" style="margin-top:40px">
             		<c:forEach items="${listings }" var="listing">
 	                	<div class="w3-col l4 m6 w3-margin-bottom">

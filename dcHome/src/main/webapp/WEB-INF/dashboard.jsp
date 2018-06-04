@@ -46,66 +46,109 @@
             	<a href="#listings" onclick="w3_close()" class="w3-bar-item w3-button">LISTINGS</a>
             	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
         	</nav>
-	<br><br><br>	
- 		<h2>Users</h2>
- 		<table border="1px">
- 			<tr>
- 				<th>Id</th>
- 				<th>First Name</th>
- 				<th>Last Name</th>
- 				<th>Email</th>
- 			</tr>
- 		<c:forEach items="${users}" var="user">
- 			<tr>
- 				<td>${ user.id }</td>
- 				<td>${ user.firstname }</td>
- 				<td>${ user.lastname }</td>
- 				<td>${ user.email }</td>
- 			</tr>
- 		</c:forEach>
- 		</table>
-		
-		<h2>Listings</h2>
-		<table border="1px">
- 			<tr>
- 				<th>Address</th>
- 				<th>Description</th>
- 				<th>Type</th>
- 				<th>Year Built</th>
- 				<th>Property Size</th>
- 				<th>Property Cost</th>
- 				<th>Details</th>
- 			</tr>
-		<c:forEach items="${listings}" var="listing">
- 			<tr>
-	 			<td>${ listing.address }</td>
-	 			<td>${ listing.description }</td>
-	 			<td>${ listing.type }</td>
-	 			<td>${ listing.yearbuilt }</td>
-	 			<td>${ listing.size }</td>
-	 			<td>${ listing.cost }</td> 
-	 			<td><a href="#"><button>View</button></a></td>			
- 			</tr>
- 		</c:forEach>
-		</table>
-		
-		<h2>Messages</h2>
-		<table border="1px">
-			<tr>	
-				<th>Name</th>
-				<th>E-mail</th>
-				<th>Subject</th>
-				<th>Message</th>
-			</tr>
-		<c:forEach items="${messages}" var="message">
-			<tr>
-				<td>${message.name}</td>
-				<td>${message.email }</td>
-				<td>${message.subject }</td>
-				<td>${message.content }</td>
-			</tr>
-		</c:forEach>
-		</table>
-		
+        	
+        	<!-- Admin Dashboard -->
+        	<div class="w3-container" style="padding:100px 16px" id="listings">
+            	<h3 class="w3-center">Welcome, ${user.firstname}</h3>
+            	<p class="w3-center w3-large">Here is your administrator dashboard</p>
+
+            	<div class="w3-row-padding " style="margin-top:64px">
+            	
+            		<!-- Users in the database -->
+                	<div class="w3-col l6 m6 w3-margin-bottom">
+                    	<div class="w3-card">
+                    		<div class="w3-container">
+                    			<h3>Users</h3>
+                    			<p class="w3-opacity">Platform users:</p>
+                            		<table class="table table-hover">
+	                                	<thead>
+	                                    	<tr class="bg-info">
+	                                        	<th scope="col">Id</th>
+	                                        	<th scope="col">Name</th>
+	                                        	<th scope="col">Username</th>
+	                                        	<th scope="col">E-mail</th>
+	                                    	</tr>
+	                                	</thead>
+	                                	<tbody>
+	                                		<c:forEach items="${users}" var="user">
+		                                    	<tr>
+		                                        	<td scope="row">${user.id}</td>
+		                                        	<td>${user.firstname} ${user.lastname}</td>
+		                                        	<td>${user.username}</td>
+		                                        	<td>${user.email}</td>
+		                                    	</tr>
+	                                    	</c:forEach>
+	                               	</tbody>
+	                         	</table>
+                        	</div>
+                    	</div>
+                	</div>
+                	
+                	<!-- User messages, questions, concerns -->
+	           	<div class="w3-col l6 m6 w3-margin-bottom">
+	            		<div class="w3-card">
+	                		<div class="w3-container">
+	                    		<h3>Messages:</h3>
+								<p class="w3-opacity">User questions, concerns, messages:</p>
+									<table class="table table-hover">
+	                                	<thead>
+	                                    	<tr class="bg-danger">
+	                                        	<th scope="col">Name</th>
+	                                        	<th scope="col">E-mail</th>
+	                                        	<th scope="col">Subject</th>
+	                                        	<th scope="col">Message</th>
+	                                    	</tr>
+	                                	</thead>
+	                                	<tbody>
+	                                		<c:forEach items="${messages}" var="message">
+											<tr>
+												<td scope="row">${message.name}</td>
+												<td>${message.email }</td>
+												<td>${message.subject }</td>
+												<td>${message.content }</td>
+											</tr>
+										</c:forEach>
+	                               	</tbody>
+	                         	</table>
+	                        	</div>
+	                    	</div>
+	                	</div>
+	                	
+                	<!-- Active Listings -->
+	           	<div class="w3-col l12 m6 w3-margin-bottom">
+	            		<div class="w3-card">
+	                		<div class="w3-container">
+	                    		<h3>Listings</h3>
+								<p class="w3-opacity">Active Listings:</p>
+									<table class="table table-hover">
+	                                	<thead>
+	                                    	<tr class="bg-success">
+	                                        	<th scope="col">Address</th>
+	                                        	<th scope="col">Type</th>
+	                                        	<th scope="col">Year Built</th>
+	                                        	<th scope="col">Cost</th>
+	                                        	<th scope="col">Size</th>
+	                                        	<th scope="col">Details</th>
+	                                    	</tr>
+	                                	</thead>
+	                                	<tbody>
+										<c:forEach items="${listings}" var="listing">
+								 			<tr>
+									 			<td>${ listing.address }</td>
+									 			<td>${ listing.type }</td>
+									 			<td>${ listing.yearbuilt }</td>
+									 			<td>${ listing.cost }</td> 
+									 			<td>${ listing.size }</td>
+									 			<td><a href="/listings/${listing.id}"><button class="w3-button w3-light-grey w3-block">
+	                                    	<i class="fa fa-search"></i>View</button></a></td>			
+								 			</tr>
+								 		</c:forEach>
+	                               	</tbody>
+	                         	</table>
+	                        	</div>
+	                    	</div>
+	                	</div>
+			</div>
+		</div>
 	</body>
 </html>

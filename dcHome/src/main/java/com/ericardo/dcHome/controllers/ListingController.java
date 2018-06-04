@@ -67,6 +67,19 @@ public class ListingController {
 		return "singleListing";
 	}
 	
+	/********************************* VIEW FAVORITE PAGE  ***********************************/
+	
+	@RequestMapping("/favorites")
+	public String favorite(Model _model, HttpSession _session) {
+		if(_session.getAttribute("id") == null) {
+			return "redirect:/listings";
+		}
+		User user = _uS.find( (Long) _session.getAttribute("id"));
+		_model.addAttribute("user", user);
+		
+		return "favorites";
+	}
+	
 	/************************************* ADD FAVORITE  *************************************/
 
 	@PostMapping("/{id}/add")
@@ -119,7 +132,7 @@ public class ListingController {
 	
 	@RequestMapping("/{id}/edit")
 	public String displaySingleListing(@PathVariable("id") Long id, Model _model, HttpSession _session, @ModelAttribute("listing") Listing listing) {
-		if(_session.getAttribute("id") == null) {
+		if(_session.getAttribute("id") != null) {
 			User user = _uS.find( (Long) _session.getAttribute("id"));
 			_model.addAttribute("user", user);
 		}
@@ -159,8 +172,6 @@ public class ListingController {
 		listing.setCost(cost);
 		listing.setUser(user);
 		_lS.update(listing);
-		
-		
 		
 		return "redirect:/listings/realtor";
 	}
@@ -213,4 +224,10 @@ public class ListingController {
 			}
 			return "redirect:/listings";
 		}
+	/************************************** JOHN ROUTE  *************************************/
+	
+	@RequestMapping("/john")
+	public String johnHelped() {
+		return "jonathan";
+	}
 }

@@ -1,0 +1,257 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<!-- bootstrap -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- w3 -->
+		<link href="<c:url value="/resources/dcHome/css/w3/w3.css" />" rel="stylesheet">
+		<!-- font -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+		<!-- font-awesome -->
+		<link href="<c:url value="/resources/dcHome/css/font-awesome/css/font-awesome.min.css" />" rel="stylesheet">
+		<!-- main stylesheet -->		
+		<link href="<c:url value="/resources/dcHome/css/style.css" />" rel="stylesheet">
+		<title>Realtor Dashboard</title>
+	</head>
+	<body>
+		<!-- Navbar (sit on top) -->
+	 	<div class="w3-top">
+            	<div class="w3-bar w3-white w3-card" id="myNavbar">
+                	<a href="/users/new" class="w3-bar-item w3-button w3-wide">LOGO</a>
+                	<!-- Right-sided navbar links -->
+                	<div class="w3-right w3-hide-small">
+                		<!-- if usre is admin -->
+                		<c:if test="${user.isAdmin() == true}">
+                    		<a href="/users/dashboard" class="w3-bar-item w3-button"></i> ADMIN</a>
+                    	</c:if>
+                    	<!-- if user is a buyer show favorites tab -->
+                    	<c:if test="${user.isRealtor() == false}">
+                    		<a href="/listings/favorites" class="w3-bar-item w3-button"></i> FAVORITES</a>
+                    	</c:if>
+                    	<!-- listings route -->
+                    	<a href="/listings" onclick="w3_close()" class="w3-bar-item w3-button" ></i>LISTINGS</a>
+                    	<!-- if user is realtor show realtor tab -->
+                    	<c:if test="${user.isRealtor() == true}">
+                    		<a href="/listings/realtor" class="w3-bar-item w3-button"></i> REALTOR</a>
+                    	</c:if>
+                    	<!-- if there's no user in session, show login -->
+                    	<c:if test="${user == null}">
+	                    	<!-- Modal link for Log In-Reg -->
+	                    	<a href="#" class="w3-bar-item w3-button" data-toggle="modal" data-target="#logInUser" ></i> LOG IN</a>
+	              	</c:if>
+	              	<!-- if there's a user in session, show logout -->
+	              	<c:if test="${user != null}">
+	              		<a href="/users/new" class="w3-bar-item w3-button"></i> LOG OUT</a>
+	              	</c:if>
+                	</div>
+                
+                	<!-- Hide right-floated links on small screens and replace them with a menu icon -->
+                	<a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+                    	<i class="fa fa-bars"></i>
+                	</a>
+            	</div>
+        	</div>
+        
+        	<!-- Sidebar on small screens when clicking the menu icon -->
+        	<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+            	<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+            	<a href="#listings" onclick="w3_close()" class="w3-bar-item w3-button">LISTINGS</a>
+            	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+        	</nav>
+
+		<!-- Listing Section -->
+        	<div class="w3-container" style="padding:100px 16px" id="listings">
+            	<h3 class="w3-center">Listing at ${listing.address}</h3>
+
+            	<div class="w3-row-padding " style="margin-top:64px">
+            	
+            		<!-- Listing Picture Section (Left) -->
+                	<div class="w3-col l6 m6 w3-margin-bottom">
+                    	<div class="w3-card">
+                    		<div class="w3-container">
+                            	<h3>Create A Listing</h3>
+                            	<p class="w3-opacity">Please fill out the form:</p>
+                            		<form:form method="POST" action="/listings/createListing" modelAttribute="listing">
+									<form:label path="address">Address:
+										<form:input path="address"></form:input>
+										<form:errors path="address"/>
+									</form:label><br>
+									
+									<form:label path="description">Description:
+										<form:input path="description"></form:input>
+										<form:errors path="description"/>
+									</form:label><br>
+									<form:label path="type">Type:
+										<form:select path="type">
+											<form:option value="Single-Family-House">Single Family House</form:option>
+											<form:option value="Town-House">Town House</form:option>
+											<form:option value="Apartment">Apartment</form:option>
+										</form:select>
+									</form:label><br>
+									<form:label path="yearbuilt">Built Year:
+										<form:input type="number" path="yearbuilt"></form:input>
+										<form:errors path="yearbuilt"/>
+									</form:label><br>
+									<form:label path="numberofrooms">Number of Bedrooms:
+										<form:input type="number" path="numberofrooms"></form:input>
+										<form:errors path="numberofrooms"/>
+									</form:label><br>
+									<form:label path="numberofbathrooms">Number of Bathrooms:
+										<form:input type="number" path="numberofbathrooms"></form:input>
+										<form:errors path="numberofbathrooms"/>
+									</form:label><br>
+									<form:label path="size">Size (Square Feet):
+										<form:input type="number" path="size"></form:input>
+										<form:errors path="size"/>
+									</form:label><br>
+									<form:label path="cost">Asking Price:
+										<form:input type="number" path="cost"></form:input>
+										<form:errors path="cost"/>
+									</form:label><br>
+									<input type="submit" value="Create Listing"/>
+								</form:form>
+                        	</div>
+                    	</div>
+                	</div>
+
+                	<div class="w3-col l6 m6 w3-margin-bottom">
+                    	<div class="w3-card">
+                        	<div class="w3-container">
+                            	<h3>Create A Listing</h3>
+                            	<p class="w3-opacity">Please fill out the form:</p>
+                            		<form:form method="POST" action="/listings/createListing" modelAttribute="listing">
+									<form:label path="address">Address:
+										<form:input path="address"></form:input>
+										<form:errors path="address"/>
+									</form:label><br>
+									
+									<form:label path="description">Description:
+										<form:input path="description"></form:input>
+										<form:errors path="description"/>
+									</form:label><br>
+									<form:label path="type">Type:
+										<form:select path="type">
+											<form:option value="Single-Family-House">Single Family House</form:option>
+											<form:option value="Town-House">Town House</form:option>
+											<form:option value="Apartment">Apartment</form:option>
+										</form:select>
+									</form:label><br>
+									<form:label path="yearbuilt">Built Year:
+										<form:input type="number" path="yearbuilt"></form:input>
+										<form:errors path="yearbuilt"/>
+									</form:label><br>
+									<form:label path="numberofrooms">Number of Bedrooms:
+										<form:input type="number" path="numberofrooms"></form:input>
+										<form:errors path="numberofrooms"/>
+									</form:label><br>
+									<form:label path="numberofbathrooms">Number of Bathrooms:
+										<form:input type="number" path="numberofbathrooms"></form:input>
+										<form:errors path="numberofbathrooms"/>
+									</form:label><br>
+									<form:label path="size">Size (Square Feet):
+										<form:input type="number" path="size"></form:input>
+										<form:errors path="size"/>
+									</form:label><br>
+									<form:label path="cost">Asking Price:
+										<form:input type="number" path="cost"></form:input>
+										<form:errors path="cost"/>
+									</form:label><br>
+									<input type="submit" value="Create Listing"/>
+								</form:form>
+                        	</div>
+                    	</div>
+                	</div>
+
+
+
+
+
+
+
+
+	
+	
+		<h1>Create a Listing</h1>
+		
+		<form:form method="POST" action="/listings/createListing" modelAttribute="listing">
+			<form:label path="address">Address:
+				<form:input path="address"></form:input>
+				<form:errors path="address"/>
+			</form:label><br>
+			
+			<form:label path="description">Description:
+				<form:input path="description"></form:input>
+				<form:errors path="description"/>
+			</form:label><br>
+			<form:label path="type">Type:
+				<form:select path="type">
+					<form:option value="Single-Family-House">Single Family House</form:option>
+					<form:option value="Town-House">Town House</form:option>
+					<form:option value="Apartment">Apartment</form:option>
+				</form:select>
+			</form:label><br>
+			<form:label path="yearbuilt">Built Year:
+				<form:input type="number" path="yearbuilt"></form:input>
+				<form:errors path="yearbuilt"/>
+			</form:label><br>
+			<form:label path="numberofrooms">Number of Bedrooms:
+				<form:input type="number" path="numberofrooms"></form:input>
+				<form:errors path="numberofrooms"/>
+			</form:label><br>
+			<form:label path="numberofbathrooms">Number of Bathrooms:
+				<form:input type="number" path="numberofbathrooms"></form:input>
+				<form:errors path="numberofbathrooms"/>
+			</form:label><br>
+			<form:label path="size">Size (Square Feet):
+				<form:input type="number" path="size"></form:input>
+				<form:errors path="size"/>
+			</form:label><br>
+			<form:label path="cost">Asking Price:
+				<form:input type="number" path="cost"></form:input>
+				<form:errors path="cost"/>
+			</form:label><br>
+			<input type="submit" value="Create Listing"/>
+		</form:form>
+		
+		<h1>My properties</h1>
+					<table border="1px">
+				<tr>
+					<th>Address</th>
+					<th>Description</th>
+					<th>Type</th>
+					<th>Year Built</th>
+					<th>Number of Bedrooms</th>
+					<th>Number of Bathrooms</th>
+					<th>Property Size</th>
+					<th>Cost</th>
+					<th>Details</th>
+				</tr>
+				<c:forEach items="${user.listings}" var="listing">
+				<tr>
+					<td>${ listing.address }</td>
+		 			<td>${ listing.description }</td>
+		 			<td>${ listing.type }</td>
+		 			<td>${ listing.yearbuilt }</td>
+		 			<td>${ listing.numberofrooms }</td>
+		 			<td>${ listing.numberofbathrooms }</td>
+		 			<td>${ listing.size } Square Feet </td>
+		 			<td>${ listing.cost }</td>
+		 			<td>
+		 				<a href="/listings/${listing.id}/edit"><button>Add Images</button></a>
+		 			</td>
+				</tr>
+				</c:forEach>
+				
+				<tr></tr>
+			</table>
+		
+	</body>
+</html>
