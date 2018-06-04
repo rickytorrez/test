@@ -16,5 +16,39 @@
 			<input id="files" name="file" type="file">
 			<input type="submit" value="Submit Image" />
 		</form:form>
+		
+		
+		<form action="/listings/${listing.id}/editListing" method="POST">
+			<p> Address:
+				<input type="text" name="address" value="${listing.address}">
+			</p>
+			<p> Description:
+				<input type="text" name="description" value="${listing.description}">
+			</p>
+			<p> Property Type:
+				<select name="type">
+					<option value="Single-Family-House">Single Family House</option>
+					<option value="Town-House">Town House</option>
+					<option value="Apartment">Apartment</option>
+				</select>
+			</p>
+			<p> Built in:
+				<input type="number" name="yearbuilt" value="${listing.yearbuilt}">
+			</p>
+			<p>	Number of rooms:
+				<input type="number" name="numberofrooms" value="${listing.numberofrooms}">
+			</p>
+			<p> Number of bathrooms:
+				<input type="number" name="numberofbathrooms" value="${listing.numberofbathrooms}">
+			</p>
+			<p> Size (Square feet):
+				<input type="number" name="size" value="${listing.size}">
+			</p>
+			<p> Cost:
+				<input type="number" name="cost" value="${listing.cost}">
+			</p>
+			<input type="submit" value="Update"/>
+		</form>
+		
 	</body>
 </html>

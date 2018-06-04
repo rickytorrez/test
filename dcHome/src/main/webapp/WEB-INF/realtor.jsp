@@ -32,8 +32,8 @@
 			</form:label><br>
 			<form:label path="type">Type:
 				<form:select path="type">
-					<form:option value="Single-Family">Single-Family Home</form:option>
-					<form:option value="TownHome">Town House</form:option>
+					<form:option value="Single-Family-House">Single Family House</form:option>
+					<form:option value="Town-House">Town House</form:option>
 					<form:option value="Apartment">Apartment</form:option>
 				</form:select>
 			</form:label><br>

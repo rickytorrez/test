@@ -92,7 +92,7 @@
             	<h3 class="w3-center">LISTINGS</h3>
             	<p class="w3-center w3-large">Our most recent listings</p>
 
-            	<div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+            	<div class="w3-row-padding" style="margin-top:64px">
             		<c:forEach items="${allListings }" var="x">
 	                	<div class="w3-col l3 m6 w3-margin-bottom">
 	                    	<div class="w3-card">
@@ -144,6 +144,7 @@
                         	</p>
                     	</form>
                 	</div>
+                	
                 	<div class="w3-half">
                     	<!-- Add Google Maps -->
                     	<div id="googleMap" class="w3-greyscale-max" style="width:100%;height:510px;"></div>
@@ -158,16 +159,12 @@
             	<div class="w3-xlarge w3-section">
                 	<i class="fa fa-facebook-official w3-hover-opacity"></i>
                 	<i class="fa fa-instagram w3-hover-opacity"></i>
-                	<i class="fa fa-snapchat w3-hover-opacity"></i>
-                	<i class="fa fa-pinterest-p w3-hover-opacity"></i>
                 	<i class="fa fa-twitter w3-hover-opacity"></i>
-                	<i class="fa fa-linkedin w3-hover-opacity"></i>
             	</div>
             	<p>Powered by
                 	<a href="https://ertorrez.com" title="W3.CSS" target="_blank" class="w3-hover-text-green">E. Ricardo Torrez</a>
             	</p>
         	</footer>
-        	
         	
         	<!-- Log-In Modal -->
 		<div class="modal fade" id="logInUser" role="dialog">
@@ -191,7 +188,7 @@
 			 						<input type="password" required name="password"/>
 			 					</label>		
 			 				</p>
-			 				<input type="submit" value="Login"/>
+			 				<input type="submit" class="btn btn-default" value="Login"/>
 			 			</form> 
 			        	</div>
 			        	<div class="modal-footer">
@@ -241,7 +238,7 @@
 					 				<option value="false">Buyer</option>
 					 			</select>
 				 			</p>
-				 			<input type="submit" value="Register"/>
+				 			<input type="submit" class="btn btn-default" value="Register"/>
 				 		</form>
 			          	
 			          	
