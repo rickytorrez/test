@@ -159,6 +159,10 @@ public class UserController {
 	public String dashboard(Model _model, HttpSession _session) {
 		if(!_uS.isValid(_session)) 
 			return _uS.redirect();
+		
+		User user = _uS.find( (Long) _session.getAttribute("id"));
+		
+		_model.addAttribute("user", user);
 		_model.addAttribute("users", _uS.all());		
 		_model.addAttribute("listings", _lS.all());
 		_model.addAttribute("messages", _mS.all());
