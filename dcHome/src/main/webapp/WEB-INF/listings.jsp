@@ -18,13 +18,15 @@
 		<link href="<c:url value="/resources/dcHome/css/font-awesome/css/font-awesome.min.css" />" rel="stylesheet">
 		<!-- main stylesheet -->		
 		<link href="<c:url value="/resources/dcHome/css/style.css" />" rel="stylesheet">
+		<!-- favicon -->
+		<link rel="shortcut icon" type="image/png" href="/resources/dcHome/img/dcHome_favico.png"/>
 		<title>Listings</title>
 	</head>
 	<body>
 		<!-- Navbar (sit on top) -->
 	 	<div class="w3-top">
             	<div class="w3-bar w3-white w3-card" id="myNavbar">
-                	<a href="/users/new" class="w3-bar-item w3-button w3-wide">LOGO</a>
+                	<a href="/users/new" class="w3-bar-item w3-button w3-wide"><img alt="" src="/resources/dcHome/img/DC_Home_1.png"></a>
                 	<!-- Right-sided navbar links -->
                 	<div class="w3-right w3-hide-small">
                 		<!-- if user is admin -->
